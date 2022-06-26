@@ -14,14 +14,14 @@ function LoginScreen() {
     setIsAuthenticating(true);
     try {
       const token = await login(email, password);
-      authContext.token(token);
+      authContext.authenticate(token);
     } catch (error) {
       Alert.alert(
         "Authentication failed",
         "Could not log you in. Please try again."
       );
+      setIsAuthenticating(false);
     }
-    setIsAuthenticating(false);
   }
 
   if (isAuthenticating) {
